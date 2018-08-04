@@ -1,0 +1,29 @@
+<div class="container title">
+	<div class="col">
+		<p>{{ formTitle }}</p>
+	</div>
+	<div class="col">
+		<p>{{ listTitle }}</p>
+	</div>
+</div>
+<div class="container content">
+	<div class="col">
+		<form (ngSubmit)="onSubmit(siteForm)" #siteForm="ngForm">
+			<input type="text" name="name" minlength="10" placeholder="Ingrese el nombre del sitio" [(ngModel)]="siteModel.name" required />
+			<input type="text" name="url" minlength="10" placeholder="Ingrese la url del sitio" [(ngModel)]="siteModel.url" required />
+			<input type="submit" [disabled]="!siteForm.form.valid" bind-value="btnText" />
+		</form>
+	</div>
+	<div class="col">
+		<div>
+			<p class="red">
+				{{ site.name }}: <br>
+				<small>{{ site.url }}</small>	
+			</p>
+		</div>
+		<p *ngFor="let sitio of sitiosInteres" (click)="setSite(sitio)">
+			{{ sitio.name }}: <br>
+			<small>{{ sitio.url }}</small>
+		</p>
+	</div>
+</div>
