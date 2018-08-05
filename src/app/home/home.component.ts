@@ -39,6 +39,7 @@ export class HomeComponent implements OnInit {
 
   // manejador del formulario
   onSubmit(f: NgForm) {
+    console.log(this.siteModel.toObject());
     this.sitiosInteres.unshift(this.siteModel.toObject());
     f.reset();
     this._site.changeSites(this.sitiosInteres);
